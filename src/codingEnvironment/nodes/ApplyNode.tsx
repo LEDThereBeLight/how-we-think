@@ -15,6 +15,7 @@ export default function ApplyNode({ data }: NodeProps<ApplyData>) {
     <div
       className="apply-node"
       style={{
+        border: '1px solid red',
         color: "white",
         cursor: "default",
         display: "flex",

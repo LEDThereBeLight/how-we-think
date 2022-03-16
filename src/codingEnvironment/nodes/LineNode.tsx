@@ -20,6 +20,7 @@ export default function LineNode({ data }: NodeProps<LineData>) {
     <div
       className="line-node nodrag"
       style={{
+        border: '1px solid green',
         color: 'white',
         cursor: 'default',
         display: "flex",

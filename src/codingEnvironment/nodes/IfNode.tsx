@@ -15,6 +15,7 @@ export default function IfNode({ data }: NodeProps<IfData>) {
     <div
       className="if-node"
       style={{
+        border: '1px solid purple',
         color: "white",
         cursor: "default",
         display: "flex",

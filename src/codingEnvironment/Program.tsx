@@ -1,19 +1,17 @@
 import React, { useCallback, useMemo, useRef, useState } from "react"
 import ReactFlow, {
   addEdge,
-  Controls,
   MiniMap,
   Background,
   Node,
   Edge,
-  FitViewOptions,
   useNodesState,
   useEdgesState,
   ReactFlowInstance,
   OnConnect,
   PanOnScrollMode,
 } from "react-flow-renderer"
-import NodeTypes from './nodes'
+import NodeTypes from "./nodes"
 
 /*
 [text input]
@@ -140,11 +138,7 @@ Graph:
 
   Parent/Child:
     all nodes children of lines
-
-Functionality:
 */
-
-
 
 const defaultNodes: Node[] = [
   {

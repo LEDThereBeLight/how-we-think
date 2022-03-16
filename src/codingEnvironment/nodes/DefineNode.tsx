@@ -5,13 +5,12 @@ import Dropdown from "../common/Dropdown"
 import TextInput from "../common/TextInput"
 import { Space } from "antd"
 
+
+// Define node has to support multiple expressions in its body
+// e.g. multiple defs, then an expr to eval
 export default function DefineNode({ data, id, xPos, yPos }: NodeProps) {
   const headerRef = useRef<HTMLDivElement | null>(null)
   const reactFlowInstance = useReactFlow()
-
-  const onChange = useCallback(evt => {
-    console.log(evt.target.value)
-  }, [])
 
   const onDragOver: React.DragEventHandler<HTMLDivElement> = useCallback(e => {
     e.preventDefault()
