@@ -1,0 +1,104 @@
+* structures
+  * lists
+    * co-recursion
+      * pair, []
+      * list()
+      * head
+      * tail
+    * recursion
+      * length
+      * concat
+      * reverse
+      * take
+      * drop
+      * replace
+      * insertLeft
+      * insertRight
+      * atIndex
+    * higher order
+      * map
+      * filter
+      * some
+      * all
+      * reduce
+    * helper functions
+  * trees
+    * co-recursion
+      * ?
+    * recursion
+      * use actual usecases for trees here (searching), instead of the same problems just with trees
+      * isBalanced
+      * reverse
+      * height
+      * length
+      * isMember
+      * insertLeft
+      * replace
+      * flatten
+    * map
+      * traversal
+        * in order
+        * level order
+    * filter
+    * reduce
+  * graphs
+    * co-recursion
+      * Node, Edge[]
+      * Adjacency matrix
+    * recursion
+  *
+
+
+* other data structures
+  * hashtable??
+  * binary search tree
+  * priority queue
+  * queue
+  * stack
+
+* search
+  * search problem template
+  * binary search
+  * exhaustive search
+    * bfs
+    * dfs
+  * searching with weights
+    * djikstra
+* recursion with remembering
+  * DP
+* combinatorial
+  * permutations
+  * combinations
+  * powerset
+  * partitions (all substrings)
+* simple geometry?
+  * sweep lines
+
+* useful functional utilities
+
+[a, b, c]
+insert_left to_insert to_left_of alist =
+  match alist
+    case [] -> []
+    case (x:xs) ->
+      if x is to_left_of do
+        [to_insert, [to_left_of, xs]]
+      else
+        [x, insert_left to_insert to_left_of xs]
+      end
+
+
+length alist =
+  match alist
+    case [] -> 0
+    case (x:xs) -> 1 + length xs
+[1] [2] [3]
+
+abc
+bac
+
+bca
+
+acb
+cba
+cab

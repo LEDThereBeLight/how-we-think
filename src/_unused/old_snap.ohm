@@ -1,0 +1,54 @@
+Snap {
+  Program = (Definition | Expression)*
+
+  Definition = TypeDefinition | VariableDefinition
+
+  TypeDefinition = ("A" | "An") ProductType "=" SumType+
+  VariableDefinition = variable parameters "=" Expression
+
+  // TypeDefinition components
+  SumType = ProductType ("|" ProductType)*
+  ProductType = type typeVariable*
+  type = upper letter*
+  typeVariable = variable
+
+  // VariableDefinition components
+  variable = (lower | "_") varchar*
+  varchar = letter | digit | "_"
+  parameters = variable*
+
+  Expression
+    = InfixApplication
+    | Application
+    | Let
+    | Fn
+    | Atom
+
+  InfixApplication = Expression binop Expression
+  binop = arithop | relop | boolop
+  arithop = "+" | "-" | "*" | "/"
+  relop = "<" | "<=" | "is" | "isnt" | ">=" | ">"
+  boolop = "and" | "or"
+
+  Application = Expression Atom
+
+  Let = "let" Definitions "in" Expression
+  Definitions = Definition ("," Definition)*
+
+  Fn = "fn" variable parameters "do" Expression "end"
+
+  Atom
+    = variable
+    | number
+    | Constructor
+    | ParenExpression
+
+  number = digit+
+
+  Constructor = SumType
+
+  ParenExpression = "(" Expression ")"
+}
+
+
+
