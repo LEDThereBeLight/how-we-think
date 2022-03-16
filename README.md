@@ -28,19 +28,19 @@
 
 ### Visual programming environment
 
-[x] Block-based programming UI
-[ ] Block-based interpreter
-[ ] Visualize heap
-[ ] Visualize stack + line numbers
-[ ] Visualize AST graph reductions
-[ ] Language Parser
-[ ] Lambda calculus interpreter
-[ ] Compile/Export to JavaScript
-[ ] Improve efficiency
+* Block-based programming UI
+* Block-based interpreter
+* Visualize heap
+* Visualize stack + line numbers
+* Visualize AST graph reductions
+* Language Parser
+* Lambda calculus interpreter
+* Compile/Export to JavaScript
+* Improve efficiency
 
 ### Puzzles
 
-[ ] (At least an attempt at) problems applicable to real-life
-[ ] Order of progression for programming problems, from basic recursion up to difficult Leetcode
-[ ] Create framework for solving categories of problems
-[ ] Gamify
+* (At least an attempt at) problems applicable to real-life
+* Order of progression for programming problems, from basic recursion up to difficult Leetcode
+* Create framework for solving categories of problems
+* Gamify
