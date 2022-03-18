@@ -1,16 +1,9 @@
 import React from "react"
-import {
-  Handle,
-  NodeProps,
-  Position,
-  useStore,
-  useStoreApi,
-} from "react-flow-renderer"
 
 interface ApplyData {
   line: number
 }
-export default function ApplyNode({ data }: NodeProps<ApplyData>) {
+export default function ApplyNode(props) {
   return (
     <div
       className="apply-node"
@@ -25,7 +18,7 @@ export default function ApplyNode({ data }: NodeProps<ApplyData>) {
       }}
     >
       <div>Apply Node</div>
-      <Handle hidden type="target" position={Position.Top} />
+      {/* <Handle hidden type="target" position={Position.Top} /> */}
     </div>
   )
 }

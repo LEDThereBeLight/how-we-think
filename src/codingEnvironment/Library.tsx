@@ -1,4 +1,5 @@
 import React from "react"
+import { motion, Reorder } from "framer-motion"
 
 export default function Library() {
   const onDragStart = React.useCallback((e, nodeType) => {
@@ -7,13 +8,17 @@ export default function Library() {
   }, [])
 
   const makeNode = (className: string, nodeType: string, label: string) => (
-    <div
+    <Reorder.Item
+      drag
+      key={nodeType}
+      value={nodeType}
+      layoutId={nodeType}
       className={`dndnode ${className}`}
-      onDragStart={e => onDragStart(e, nodeType)}
-      draggable
     >
-      {label}
-    </div>
+      <div onDragStart={e => onDragStart(e, nodeType)}>
+        {label}
+      </div>
+    </Reorder.Item>
   )
 
   const nodes = [
@@ -36,7 +41,9 @@ export default function Library() {
       <div className="description">
         You can drag these nodes to the pane on the right.
       </div>
-      {nodes}
+      <Reorder.Group values={nodes} onReorder={() => {}}>
+        {nodes}
+      </Reorder.Group>
     </aside>
   )
 }

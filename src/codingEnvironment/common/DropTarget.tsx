@@ -1,4 +1,66 @@
-import React from 'react'
+import React, { useCallback } from "react"
+import { LINE_HEIGHT } from "../globals"
+import { motion, LayoutGroup, Reorder, AnimatePresence } from "framer-motion"
+
+const moveNodeToParent = (
+  nodeId: string,
+  parentId: string,
+  targetId?: string
+) => {
+  // add edge { source: node, target: targetId ?? parent }
+  // node.parent = parent
+}
+
+interface Props {
+  parentId: string
+  renderer: JSX.Element
+}
+export default function DropTarget(props: Props) {
+  const flow = {}
+
+  const onDragOver: React.DragEventHandler<HTMLDivElement> = useCallback(e => {
+    e.preventDefault()
+    e.dataTransfer.dropEffect = "move"
+  }, [])
+
+  const onDrop: React.DragEventHandler<HTMLDivElement> = useCallback(
+    e => {
+      e.preventDefault()
+      e.stopPropagation()
+    },
+    [flow]
+  )
+
+  const [items, setItems] = React.useState([{ id: 1 }])
+
+  return (
+    <Reorder.Group
+      axis="y"
+      layoutId={props.parentId + "droptarget"}
+      values={items}
+      onReorder={setItems}
+      style={{
+        minHeight: LINE_HEIGHT,
+        borderLeft: "10px solid aliceblue",
+      }}
+    >
+      <AnimatePresence>
+        {items.map(item => (
+          <Reorder.Item
+            layoutId={String(item.id)}
+            drag
+            key={item.id}
+            value={item}
+          >
+            <motion.div onDragOver={onDragOver} onDrop={onDrop}>
+              Item
+            </motion.div>
+          </Reorder.Item>
+        ))}
+      </AnimatePresence>
+    </Reorder.Group>
+  )
+}
 
 /*
 Call relayout anytime a node or edge changes
@@ -24,6 +86,11 @@ displaySlotBefore(node) ->
   # insert a virtual "blank" node before this node
   # probably just set a separate local state variable then reset after
 
+Handle droptarget taking up "space"
+  left sidebar expands down at least 1 line,
+  if another node is added below, it should go to the
+  line number below it instead
+
 Validations:
   ****
 
@@ -38,7 +105,6 @@ Drop targets:
     case invalid: show some indicator
     else: displaySlotBefore(
             event.y >= midpoint ? next(droptarget) : droptarget)
-
 
 
 

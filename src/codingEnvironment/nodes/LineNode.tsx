@@ -1,11 +1,4 @@
 import React from "react"
-import {
-  Handle,
-  NodeProps,
-  Position,
-  useStore,
-  useStoreApi,
-} from "react-flow-renderer"
 
 const printLineNumber = (n: number) => {
   if (n < 10) return "0" + String(n)
@@ -15,7 +8,7 @@ const printLineNumber = (n: number) => {
 interface LineData {
   line: number
 }
-export default function LineNode({ data }: NodeProps<LineData>) {
+export default function LineNode(props) {
   return (
     <div
       className="line-node nodrag"
@@ -29,8 +22,8 @@ export default function LineNode({ data }: NodeProps<LineData>) {
         width: '500px',
       }}
     >
-      <div>{printLineNumber(data.line)}</div>
-      <Handle hidden type="target" position={Position.Top} />
+      <div>{printLineNumber(props.line)}</div>
+      {/* <Handle hidden type="target" position={Position.Top} /> */}
     </div>
   )
 }

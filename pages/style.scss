@@ -1,4 +1,4 @@
-@import '~antd/dist/antd.css';
+@import "~antd/dist/antd.css";
 
 .dndflow {
   flex-direction: column;
@@ -55,5 +55,52 @@
   .dndflow aside {
     width: 20%;
     max-width: 250px;
+  }
+}
+
+.reorderable-program {
+  ul,
+  li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+  }
+
+  ul {
+    position: relative;
+    width: 300px;
+  }
+
+  li {
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 15px 18px;
+    position: relative;
+    background: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    cursor: grab;
+  }
+
+  li svg {
+    width: 18px;
+    height: 18px;
+    cursor: grab;
+  }
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    background: #fff;
   }
 }

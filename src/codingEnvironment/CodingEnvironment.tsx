@@ -1,7 +1,9 @@
 import React, { useCallback, useState } from "react"
-import Program from "./Program"
+import ReorderableList from "./common/Reorder"
+import Program from "./program/Program"
 import Library from "./Library"
-import { ReactFlowProvider } from "react-flow-renderer"
+import {DndProvider} from "react-dnd"
+import {HTML5Backend} from "react-dnd-html5-backend"
 
 export default function CodingEnvironment() {
   return (
@@ -13,10 +15,8 @@ export default function CodingEnvironment() {
       }}
       className="dndflow"
     >
-      <ReactFlowProvider>
-        <Library />
-        <Program />
-      </ReactFlowProvider>
+      <Library />
+      <Program />
     </div>
   )
 }

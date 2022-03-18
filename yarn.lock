@@ -1015,11 +1015,6 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.21.tgz#864b987c0c68d07b4345845c3e63b75edd143644"
   integrity sha512-DBZCJbhII3r90XbQxI8Y9IjjiiOGlZ0Hr32omXIZvwwZ7p4DMMXGrKXVyPfuoBOri9XNtL0UK69jYIBIsRX3QQ==
 
-"@types/parsimmon@^1.10.6":
-  version "1.10.6"
-  resolved "https://registry.yarnpkg.com/@types/parsimmon/-/parsimmon-1.10.6.tgz#8fcf95990514d2a7624aa5f630c13bf2427f9cdd"
-  integrity sha512-FwAQwMRbkhx0J6YELkwIpciVzCcgEqXEbIrIn3a2P5d3kGEHQ3wVhlN3YdVepYP+bZzCYO6OjmD4o9TGOZ40rA==
-
 "@types/prop-types@*":
   version "15.7.4"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.4.tgz#fcf7205c25dff795ee79af1e30da2c9790808f11"
@@ -2002,6 +1997,11 @@ hoist-non-react-statics@^3.3.2:
   integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
   dependencies:
     react-is "^16.7.0"
+
+human-id@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/human-id/-/human-id-3.0.0.tgz#018957533b9f19bedcc48fe77980874884f4b301"
+  integrity sha512-smROKWOQI3rjjR44o5m9Bk2ds5YVTxfeL/rmp28fwOQyNhfQH13KMZ/jUErceC2fBuiQeOrWenopUN8hsBGZtQ==
 
 ignore@^4.0.6:
   version "4.0.6"

@@ -1,28 +1,19 @@
 import React from "react"
-import {
-  Handle,
-  NodeProps,
-  Position,
-  useStore,
-  useStoreApi,
-} from "react-flow-renderer"
 
-const DropHandle = () => {
-  const s = useStore()
-  const ss = useStoreApi()
+// const DropHandle = () => {
 
-  return (
-    <Handle
-      type="target"
-      position={Position.Left}
-      isValidConnection={connection => connection.source === "some-id"}
-      onConnect={params => console.log("handle onConnect", params)}
-      style={{ background: "#fff" }}
-    />
-  )
-}
+//   return (
+//     <Handle
+//       type="target"
+//       position={Position.Left}
+//       isValidConnection={connection => connection.source === "some-id"}
+//       onConnect={params => console.log("handle onConnect", params)}
+//       style={{ background: "#fff" }}
+//     />
+//   )
+// }
 
-export default function CaseNode({ data }: NodeProps) {
+export default function CaseNode(props) {
   return (
     <div
       className="case-node"
@@ -33,12 +24,11 @@ export default function CaseNode({ data }: NodeProps) {
         background: "white",
         display: "flex",
         flexDirection: "column",
-        minHeight: "100px",
       }}
     >
       <div style={{ display: "flex" }}>
         <div>case</div>
-        <Handle type="target" position={Position.Top} />
+        {/* <Handle type="target" position={Position.Top} /> */}
         <div>...</div>
         <div>of</div>
       </div>

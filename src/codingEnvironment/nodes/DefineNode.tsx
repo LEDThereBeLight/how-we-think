@@ -1,70 +1,21 @@
-import React, { useCallback, useRef, useState } from "react"
-import { Handle, NodeProps, Position, useReactFlow } from "react-flow-renderer"
-import { getId } from "../Program"
+import React, { useState } from "react"
 import Dropdown from "../common/Dropdown"
 import TextInput from "../common/TextInput"
+import DropTarget from "../common/DropTarget"
 import { Space } from "antd"
-
-
+import { motion } from "framer-motion"
+import { Definition } from "../../language/syntax/types"
 // Define node has to support multiple expressions in its body
 // e.g. multiple defs, then an expr to eval
-export default function DefineNode({ data, id, xPos, yPos }: NodeProps) {
-  const headerRef = useRef<HTMLDivElement | null>(null)
-  const reactFlowInstance = useReactFlow()
-
-  const onDragOver: React.DragEventHandler<HTMLDivElement> = useCallback(e => {
-    e.preventDefault()
-    e.dataTransfer.dropEffect = "move"
-  }, [])
-
-  const onDrop: React.DragEventHandler<HTMLDivElement> = useCallback(
-    e => {
-      e.preventDefault()
-      e.stopPropagation()
-
-      const typeInfo = e.dataTransfer.getData("application/reactflow")
-      if (!typeInfo) return
-
-      if (typeInfo.includes("New-")) {
-        const type = typeInfo.split("New-")[1]
-        // new node, create and add it
-        // add edge?
-        reactFlowInstance.setNodes(nds =>
-          nds.concat({
-            id: getId(),
-            type,
-            parentNode: id,
-            position: {
-              x: 12,
-              y: 70,
-            },
-            data: { label: `${type} node` },
-            expandParent: true,
-          })
-        )
-      }
-
-      // If existing node, move it
-    },
-    [reactFlowInstance]
-  )
-
-  const onDragEnter = e => {
-    e.preventDefault()
-    console.log("dragenter", e.dataTransfer.getData("application/reactflow"))
-  }
-
+interface Props {
+  id: string
+  definition: Definition
+}
+export default function DefineNode(props) {
   const [word, setWord] = useState("")
 
   return (
-    <div
-      style={{
-        borderRadius: "5px",
-        display: "flex",
-        flexDirection: "column",
-        height: "100%",
-      }}
-    >
+    <motion.div drag>
       <Space
         align="baseline"
         style={{
@@ -84,19 +35,7 @@ export default function DefineNode({ data, id, xPos, yPos }: NodeProps) {
         <span>...</span>
         <span>=</span>
       </Space>
-      <div
-        style={{
-          borderLeft: "10px solid aliceblue",
-          width: "100%",
-          flexGrow: 1,
-          minHeight: "100px",
-        }}
-        onDragEnter={onDragEnter}
-        onDragOver={onDragOver}
-        onDrop={onDrop}
-      >
-        <Handle type="target" id="definition" position={Position.Left} hidden />
-      </div>
-    </div>
+      <DropTarget parentId={props.id} renderer={<></>} />
+    </motion.div>
   )
 }

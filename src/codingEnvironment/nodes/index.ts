@@ -7,7 +7,6 @@ import Apply from "./ApplyNode";
 export default {
   Case,
   Define,
-  Line,
   If,
   Apply
 }

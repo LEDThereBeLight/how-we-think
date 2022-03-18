@@ -19,6 +19,7 @@ export default memo(function TextInput(props: Props) {
       className="nodrag ant-input"
       role="textbox"
       contentEditable
+      suppressContentEditableWarning
       onInput={onChange}
       onBlur={onChange}
     >
