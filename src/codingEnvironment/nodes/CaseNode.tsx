@@ -1,40 +1,52 @@
-import React from "react"
+import React from "react";
+import { Case } from "../../language/syntax/types";
+import { motion } from "framer-motion";
+import TextInput from "../common/TextInput";
+import { Space } from "antd";
+import useState from "react";
+import humanId from "human-id";
+import nodeRegistry from "./nodeRegistry";
 
-// const DropHandle = () => {
-
-//   return (
-//     <Handle
-//       type="target"
-//       position={Position.Left}
-//       isValidConnection={connection => connection.source === "some-id"}
-//       onConnect={params => console.log("handle onConnect", params)}
-//       style={{ background: "#fff" }}
-//     />
-//   )
-// }
-
-export default function CaseNode(props) {
+// Case(Var("alist"), [
+//   Alt("Nothing-Id", [], Num(0)),
+//   Alt(
+//     "Pair-Id",
+//     ["x", "xs"],
+//     Ap(Ap(Var("+"), Num(1)), Ap(Var("length"), Var("xs")))
+//   ),
+// ]),
+interface P {
+  id: string;
+  data: Case;
+}
+export default function CaseNode(props: P) {
+  console.log(props.data)
   return (
-    <div
+    <motion.div
       className="case-node"
       style={{
-        border: "1px solid #eee",
-        padding: "5px",
-        borderRadius: "5px",
-        background: "white",
         display: "flex",
         flexDirection: "column",
       }}
     >
-      <div style={{ display: "flex" }}>
+      <Space align="baseline">
         <div>case</div>
-        {/* <Handle type="target" position={Position.Top} /> */}
+        {React.createElement(nodeRegistry[props.data.expr.t], {
+          ...props,
+          id: humanId(),
+          data: props.data.expr,
+        })}
         <div>...</div>
         <div>of</div>
-      </div>
-      <div style={{ display: "flex" }}>
-        {/* definition impl/output goes here */}
-      </div>
-    </div>
-  )
+      </Space>
+
+      {props.data.alts.map((expr) =>
+        React.createElement(nodeRegistry[expr.t], {
+          ...props,
+          id: humanId(),
+          data: expr,
+        })
+      )}
+    </motion.div>
+  );
 }

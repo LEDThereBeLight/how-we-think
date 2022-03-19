@@ -16,7 +16,7 @@ export default memo(function TextInput(props: Props) {
     <span
       style={{ cursor: "text" }}
       ref={ref}
-      className="nodrag ant-input"
+      className="ant-input"
       role="textbox"
       contentEditable
       suppressContentEditableWarning
